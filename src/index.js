@@ -11,7 +11,6 @@ const AssignedUserGameRepository = require('./data/AssignedUserGameRepository');
 
 const app = express();
 const port = process.env.PORT || 3001;
-
 const WebSocketServer = require('websocket').server;
 const http = require('http');
 const httpServer = http.createServer(app);
