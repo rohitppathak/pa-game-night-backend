@@ -13,7 +13,7 @@ const WebSocketServer = require('websocket').server;
 const http = require('http');
 const httpServer = http.createServer((request, response) => {
 });
-httpServer.listen(3002);
+httpServer.listen(process.env.PORT || 3002);
 const wsServer = new WebSocketServer({httpServer: httpServer});
 const clients = [];
 
