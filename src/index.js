@@ -9,11 +9,12 @@ const UserRepository = require('./data/UserRepository');
 const GameUserRankingsRepository = require('./data/GameUserRankingsRepository');
 const AssignedUserGameRepository = require('./data/AssignedUserGameRepository');
 
+const app = express();
+const port = process.env.PORT || 3001;
+
 const WebSocketServer = require('websocket').server;
 const http = require('http');
-const httpServer = http.createServer((request, response) => {
-});
-httpServer.listen(process.env.PORT || 3002);
+const httpServer = http.createServer(app);
 const wsServer = new WebSocketServer({httpServer: httpServer});
 const clients = [];
 
@@ -22,6 +23,7 @@ wsServer.on('request', async (request) => {
   clients.push(connection);
   await sendDataToClients();
 });
+httpServer.listen(port);
 
 async function sendDataToClients() {
   const gamesData = await gameRepo.getAll();
@@ -42,10 +44,6 @@ async function sendDataToClients() {
     client.sendUTF(JSON.stringify(gameMappings));
   }
 }
-
-const app = express();
-const port = 3001;
-let server;
 
 global.gameMappings = require("./static/Games.json");
 
@@ -78,8 +76,6 @@ async function main() {
   app.delete('/games/:gameId/users/:userId', deleteUserFromGame);
 
   app.get('/matchUsers', findAllGameUserCombinations);
-
-  server = app.listen(port);
   await sendDataToClients();
 }
 
