@@ -3,7 +3,7 @@ This backend code is hosted at https://fast-retreat-55590.herokuapp.com/.
 To see it in action with the frontend code, visit https://blooming-coast-46890.herokuapp.com/.
 
 ## Overview
-The goal of this project is to help assign users to games during an event to maximize the number of users who can play their preferred games. This backend code is responsible for the functionality of adding a user, removing a user, getting a user's preferred games, updating a user's preferred games, adding a game, deleting a user from a game, and matching users to games. The data is stored in a SQLite database.
+The goal of this project is to help assign users to games during an event to maximize the number of users who can play their preferred games. This backend code is responsible for the functionality of adding a user, removing a user, getting a user's preferred games, updating a user's preferred games, adding a game, deleting a user from a game, and matching users to games. The data is stored in a SQLite database. To implement real-time updating, the code uses a Websocket connection.
 
 ### Matching Users
 The most involved action in this code is matching users to games given user rankings for games. This is done with the following:
