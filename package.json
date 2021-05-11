@@ -15,7 +15,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "sqlite3": "^4.1.0",
     "websocket": "^1.0.29"
   }
